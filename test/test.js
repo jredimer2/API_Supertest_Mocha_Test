@@ -11,7 +11,7 @@ describe('Swagger Pet Store API Tests', function () {
         const response = await axios.get(host + `/pet/${id}`);
         expect(response.data).to.include({ id: 500 })
     }
-    )
+    ).timeout(10000)
 
     it('Update pet name', async function () {
 
@@ -33,14 +33,14 @@ describe('Swagger Pet Store API Tests', function () {
             status: "pending"
         });
 
-        const getResponse = await axios.get(host + `/pet/500`);
-        expect(getResponse.data).to.include({ id: 500 })
-        expect(getResponse.data).to.include({ name: 'goofy' })
+        const getResponse = await axios.get(host + `/pet/${id}`);
+        expect(getResponse.data).to.include({ id })
+        expect(getResponse.data).to.include({ name })
     }
-    )
+    ).timeout(10000)
 
     it('Delete a pet', async function () {
-        // create a new pet, to be deleted in next step
+        // step 1: create a new pet, to be deleted in next step
         const id = 5077;
         const name = 'urchin';
 
@@ -59,24 +59,22 @@ describe('Swagger Pet Store API Tests', function () {
             status: "pending"
         });
 
-        // delete pet
+        // step 2: delete pet
         const deleteResponse = await axios.delete(host + `/pet/${id}`)
 
-        var getResponse;
-
+        // step 3: verify if pet has been deleted
         try {
-            getResponse = await axios.get(host + `/pet/${id}`);
+            var getResponse = await axios.get(host + `/pet/${id}`);
+            expect(getResponse.data).to.not.include({ id })     
         } catch (err) {
-            console.log('Try catch getResponse ', getResponse)
+            if (err.hasOwnProperty('response')) {  // check if pet is deleted
+                expect(err.response.data).to.include({ message: 'Pet not found' })
+            } else {  // pet not deleted, throwing err out for reporting
+                throw err
+            }
         }
-
-        //expect(getResponse.statusCode).to.equal(404);
-
-        //console.log(getResponse)
-
-
     }
-    )
+    ).timeout(10000)
 
 
 }

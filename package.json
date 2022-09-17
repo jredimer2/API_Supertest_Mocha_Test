@@ -1,0 +1,29 @@
+{
+  "name": "api_supertest_mocha_test",
+  "version": "1.0.0",
+  "description": "API test using Supertest and Mocha frameworks",
+  "main": "index.js",
+  "scripts": {
+    "test2": "jest",
+    "test": "mocha --reporter mochawesome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jredimer2/API_Supertest_Mocha_Test.git"
+  },
+  "author": "Joseph Redimerio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jredimer2/API_Supertest_Mocha_Test/issues"
+  },
+  "homepage": "https://github.com/jredimer2/API_Supertest_Mocha_Test#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chai": "^4.3.6",
+    "express": "^4.18.1",
+    "mocha": "^10.0.0",
+    "mochawesome": "^7.1.3",
+    "superagent": "^8.0.0",
+    "supertest": "^6.1.6"
+  }
+}
