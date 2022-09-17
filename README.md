@@ -2,7 +2,7 @@
 Automated API test in JavaScript, using Supertest and Mocha
 
 # Github Repository
-hhttps://github.com/jredimer2/API_Supertest_Mocha_Test.git
+https://github.com/jredimer2/API_Supertest_Mocha_Test.git
 
 # Setup instructions
 1. In command prompt, type 'npm install'.
