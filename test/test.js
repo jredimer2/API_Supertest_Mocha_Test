@@ -14,10 +14,8 @@ describe('Swagger Pet Store API Tests', function () {
     ).timeout(10000)
 
     it('Update pet name', async function () {
-
         const id = 500;
         const name = 'goofy';
-
         const updateResponse = await axios.put(host + `/pet`, {
             id,
             name: name,
@@ -32,7 +30,6 @@ describe('Swagger Pet Store API Tests', function () {
             ],
             status: "pending"
         });
-
         const getResponse = await axios.get(host + `/pet/${id}`);
         expect(getResponse.data).to.include({ id })
         expect(getResponse.data).to.include({ name })
@@ -43,7 +40,6 @@ describe('Swagger Pet Store API Tests', function () {
         // step 1: create a new pet, to be deleted in next step
         const id = 5077;
         const name = 'urchin';
-
         const updateResponse = await axios.put(host + `/pet`, {
             id,
             name: name,
@@ -67,7 +63,7 @@ describe('Swagger Pet Store API Tests', function () {
             var getResponse = await axios.get(host + `/pet/${id}`);
             expect(getResponse.data).to.not.include({ id })     
         } catch (err) {
-            if (err.hasOwnProperty('response')) {  // check if pet is deleted
+            if (err.hasOwnProperty('response')) {  // 404 response, check if pet is deleted
                 expect(err.response.data).to.include({ message: 'Pet not found' })
             } else {  // pet not deleted, throwing err out for reporting
                 throw err
