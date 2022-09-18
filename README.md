@@ -8,5 +8,5 @@ https://github.com/jredimer2/API_Supertest_Mocha_Test
 1. In command prompt, type 'npm install'.
 2. To run all the tests, type 'npm test'
 
-**Note:** The HTML link of the report is displayed on the console at the end of the test run. Copy and paste this URL to a browser to view the results.
+**Note:** The HTML link of the report is displayed on the console at the end of the test run (Mochawesome report). Copy and paste this URL to a browser to view the results.
 
